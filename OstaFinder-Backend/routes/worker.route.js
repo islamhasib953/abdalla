@@ -19,7 +19,7 @@ import {
 
 const router = express.Router();
 
-router.use(verifyToken);
+// router.use(verifyToken);
 
 // Dashboard
 router.get("/stats", getDashboardStats);

@@ -23,6 +23,8 @@ import ServicesManagement from "../features/worker/pages/ServicesManagement";
 import IncomingRequests from "../features/worker/pages/IncomingRequests";
 import AddService from "../features/worker/pages/AddService";
 import PreviousWorks from "../features/worker/pages/PreviousWorks";
+import AddWork from "../features/worker/pages/AddWork";
+import EditWork from "../features/worker/pages/EditWork";
 import WorkDetails from "../features/worker/pages/WorkDetails";
 import WorkerLayout from "../layouts/WorkerLayout";
 import { WorkerRoutes } from "../features/worker/constants/routes.config";
@@ -57,6 +59,8 @@ export default function AppRoutes() {
             element={<ServicesManagement />}
           />
           <Route path={WorkerRoutes.WORKS} element={<PreviousWorks />} />
+          <Route path={WorkerRoutes.WORK_ADD} element={<AddWork />} />
+          <Route path={WorkerRoutes.WORKS + "/:id/edit"} element={<EditWork />} />
           <Route
             path={WorkerRoutes.WORK_DETAIL(":id")}
             element={<WorkDetails />}

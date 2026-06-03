@@ -31,7 +31,7 @@ export default function PreviousWorks() {
   });
   const AddButton = (
     <Link
-      to={`${WorkerRoutes.WORKS}/add`}
+      to={`${WorkerRoutes.WORKS}/add?status=${activeTab}`}
       className="flex items-center justify-center gap-2 bg-[#d97706] hover:bg-[#b45309] text-white px-6 py-3 rounded-xl font-medium transition-colors shadow-sm w-full sm:w-auto"
     >
       <svg
@@ -46,7 +46,7 @@ export default function PreviousWorks() {
           clipRule="evenodd"
         />
       </svg>
-      إضافة عمل جديد
+      {activeTab === "completed" ? "إضافة عمل سابق" : "إضافة عمل حالي"}
     </Link>
   );
 

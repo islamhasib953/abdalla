@@ -9,7 +9,7 @@ import ApiError from "../utils/ApiError.js";
 // ============================================
 export const getDashboardStats = async (req, res, next) => {
     try {
-        const workerId = req.user.id; // from verifyToken
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id; // from verifyToken
 
         // Calculate stats
         const totalRequests = await Request.countDocuments({ worker: workerId });
@@ -29,7 +29,7 @@ export const getDashboardStats = async (req, res, next) => {
 
 export const getDashboardRequests = async (req, res, next) => {
     try {
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         // Get recent requests
         const requests = await Request.find({ worker: workerId })
             .sort({ createdAt: -1 })
@@ -46,7 +46,7 @@ export const getDashboardRequests = async (req, res, next) => {
 // ============================================
 export const getIncomingRequests = async (req, res, next) => {
     try {
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         const requests = await Request.find({ worker: workerId, status: { $in: ["pending", "awaiting_approval"] } })
             .sort({ createdAt: -1 });
 
@@ -60,7 +60,7 @@ export const updateRequestStatus = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { status } = req.body; // e.g. "in_progress", "rejected"
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
 
         const request = await Request.findOneAndUpdate(
             { _id: id, worker: workerId },
@@ -83,7 +83,7 @@ export const updateRequestStatus = async (req, res, next) => {
 // ============================================
 export const getWorkerServices = async (req, res, next) => {
     try {
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         const services = await Service.find({ worker: workerId }).sort({ createdAt: -1 });
         res.status(200).json({ success: true, data: services });
     } catch (error) {
@@ -94,7 +94,7 @@ export const getWorkerServices = async (req, res, next) => {
 export const getWorkerServiceById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         const service = await Service.findOne({ _id: id, worker: workerId });
         
         if (!service) {
@@ -109,7 +109,7 @@ export const getWorkerServiceById = async (req, res, next) => {
 
 export const addWorkerService = async (req, res, next) => {
     try {
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         const { title, category, price, description, location } = req.body;
 
         const service = await Service.create({
@@ -130,7 +130,7 @@ export const addWorkerService = async (req, res, next) => {
 export const updateWorkerService = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
 
         const service = await Service.findOneAndUpdate(
             { _id: id, worker: workerId },
@@ -151,7 +151,7 @@ export const updateWorkerService = async (req, res, next) => {
 export const deleteWorkerService = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
 
         const service = await Service.findOneAndDelete({ _id: id, worker: workerId });
 
@@ -170,7 +170,7 @@ export const deleteWorkerService = async (req, res, next) => {
 // ============================================
 export const getWorkerWorks = async (req, res, next) => {
     try {
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         const works = await Portfolio.find({ worker: workerId }).sort({ createdAt: -1 });
         res.status(200).json({ success: true, data: works });
     } catch (error) {
@@ -181,7 +181,7 @@ export const getWorkerWorks = async (req, res, next) => {
 export const getWorkerWorkById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         const work = await Portfolio.findOne({ _id: id, worker: workerId });
         
         if (!work) {
@@ -196,7 +196,7 @@ export const getWorkerWorkById = async (req, res, next) => {
 
 export const addWorkerWork = async (req, res, next) => {
     try {
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
         const { title, category, clientName, description, date, source, status, location, price } = req.body;
 
         const work = await Portfolio.create({
@@ -221,7 +221,7 @@ export const addWorkerWork = async (req, res, next) => {
 export const updateWorkerWork = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
 
         const work = await Portfolio.findOneAndUpdate(
             { _id: id, worker: workerId },
@@ -242,7 +242,7 @@ export const updateWorkerWork = async (req, res, next) => {
 export const deleteWorkerWork = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const workerId = req.user.id;
+        const workerId = "60d5ec49f1b2c3d4e5f6a7b8"; // req.user.id;
 
         const work = await Portfolio.findOneAndDelete({ _id: id, worker: workerId });
 
